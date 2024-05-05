@@ -1,7 +1,7 @@
 import asyncio
 from aiogram import types
 from aiogram import Bot, Dispatcher
-from aiogram.filters import CommandStart
+
 
 
 TOKEN = '6558387187:AAFoSJPpEna_rrS8pJk9fjI1Juh5uHGBOJ0'
@@ -12,16 +12,8 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
 
-@dp.message(CommandStart())
-async def start_cmd(message: types.Message):
-    await message.answer("Привет, это бот фастфуд")
-
-
-@dp.message()
-async def echo(message: types.Message):
-    await message.answer("бот находться в разработке")
-    user_text = message.text
-    await message.answer(user_text)
+from handlers.user_privat import user_router
+dp.include_router(user_router)
 
 
 # функция для старта бота
