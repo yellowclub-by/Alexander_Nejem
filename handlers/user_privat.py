@@ -1,4 +1,4 @@
-from aiogram import types, Router
+from aiogram import types, Router, F
 from aiogram.filters import CommandStart, Command
 
 user_router = Router()
@@ -9,30 +9,42 @@ async def start_cmd(message: types.Message):
     await message.answer("Привет, это бот фастфуд")
 
 
+@user_router.message(F.text.lower() == 'меню')
 @user_router.message(Command("menu"))
 async def menu(message: types.Message):
-    await message.answer(f"Это наша меню в фастфуде:")
+    await message.answer(f"Это наша меню в кафе:")
 
 
+@user_router.message(F.text.lower() == 'про нас')
 @user_router.message(Command("about"))
 async def about(message: types.Message):
     await message.answer(
-        f"О нас: Tiks, это фастфуд,где продают вкусную иж недорогую еду и заказ будут везти"
-        f"от 20 минут")
+        f"О нас: Tiks, это кафе,где продают вкусные иж недорогие десерты и мы уверены, что вы найдете то что хотите")
 
 
+@user_router.message(F.text.lower() == 'адреса')
 @user_router.message(Command("addresses"))
 async def addresses(message: types.Message):
-    await message.answer("Адреса:")
+    await message.answer("Адрес: у.Уютная 2")
 
 
+@user_router.message(F.text.lower() == 'контакты')
 @user_router.message(Command('contacts'))
 async def contacts(message: types.Message):
     await message.answer("Контакт: 80445118158")
 
 
-@user_router.message()
+# @user_router.message(F.text)
+# @user_router.message(F.photo)
+# @user_router.message(F.sticker)
+# @user_router.message(F.text.lower() == 'доставка')
+# @user_router.message(F.text.lower().contains('доставк'))
+# @user_router.message(F.text.lower().startswith('как'))
+# @user_router.message(F.text.lower().endswith('?'))
+# @user_router.message(F.text.lower().startswith("как"), F.text.lower().endswith('?'))
+# @user_router.message( (F.text.lower().contains('стоимост') ) | (F.text.lower().contains('цен')) )
+
+
+
 async def echo(message: types.Message):
-    await message.answer("бот находться в разработке")
-    user_text = message.text
-    await message.answer(user_text)
+    await message.answer("Сработал 'Магический фильтр'")
