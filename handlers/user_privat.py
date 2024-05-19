@@ -6,7 +6,7 @@ user_router = Router()
 
 @user_router.message(CommandStart())
 async def start_cmd(message: types.Message):
-    await message.answer("Привет, это бот фастфуд")
+    await message.answer("Привет, это бот каф")
 
 
 @user_router.message(F.text.lower() == 'меню')
