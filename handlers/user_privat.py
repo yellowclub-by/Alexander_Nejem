@@ -1,18 +1,19 @@
 from aiogram import types, Router, F
 from aiogram.filters import CommandStart, Command
+from keybords import reply
 
 user_router = Router()
 
 
 @user_router.message(CommandStart())
 async def start_cmd(message: types.Message):
-    await message.answer("Привет, это бот каф")
+    await message.answer("Привет, это бот кафe", reply_markup=reply.start_kb )
 
 
 @user_router.message(F.text.lower() == 'меню')
 @user_router.message(Command("menu"))
 async def menu(message: types.Message):
-    await message.answer(f"Это наша меню в кафе:")
+    await message.answer(f"Это наша меню в кафе:", reply_markup=reply.menu_kb)
 
 
 @user_router.message(F.text.lower() == 'про нас')
