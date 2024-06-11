@@ -14,11 +14,14 @@ dp = Dispatcher()
 
 from handlers.user_privat import user_router
 from handlers.user_group import group_router
+from handlers.menu import menu_router
 dp.include_router(user_router)
+dp.include_router(menu_router)
 dp.include_router(group_router)
 
 # функция для старта бота
 async def main():
+    print('Bot is activate')
     await dp.start_polling(bot)
 
 
