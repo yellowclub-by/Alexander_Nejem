@@ -11,3 +11,13 @@ def addresses_kb():
         width=2
     )
     return builder.as_markup()
+
+
+links_kb = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton(text='Сайт', url='https://pirogov.by/deserty/'),
+            InlineKeyboardButton(text='Телеграмм', url='tg://resolve?domain=cantata_ru')
+        ]
+    ]
+)

@@ -6,7 +6,7 @@ from aiogram import Bot, Dispatcher
 
 TOKEN = '6558387187:AAFoSJPpEna_rrS8pJk9fjI1Juh5uHGBOJ0'
 # связываем код с ботом в телеграме
-bot = Bot(token=TOKEN)
+bot = Bot(token=TOKEN, parse_mode='HTML')
 
 # создаем диспетчер для обработки команд
 dp = Dispatcher()
