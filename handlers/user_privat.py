@@ -45,7 +45,8 @@ async def addresses_types(callback: types.CallbackQuery):
 @user_router.message(F.text.lower() == 'контакты')
 @user_router.message(Command('contacts'))
 async def contacts(message: types.Message):
-    await message.answer("Контакт: 80445118158")
+    await message.answer(f'''Контакт: 80445118158
+инстаграмм: @mexaneris''')
 
 
 @user_router.message(F.text.lower() == 'назад')
